@@ -1,4 +1,5 @@
-This is a learning folder for javascript from scratch for beginner to advance .
+This is a learning folder for javascript from  beginner to advance .
+It shows the structure to learn it basics,intermidiate to advance .
 It shows day wise with practical assignments.
 
 
