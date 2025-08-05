@@ -149,6 +149,43 @@ OutPut ====>
 
 
 
+//--------------------------------------//Practice Questions//---------------------------------------
 
-        
+// Q-1) You are creating a website for your college. Create a class User with 2 propertirs , name & email. It also has a method  called viewData () that allows user to view website data.
+
+class User{
+  constructor(Name,email){
+    this.Name = Name;
+    this.email = email;
+
+  }
+  viewData(){
+    console.log("You are in website data stored")
+  }
+}
+
+
+
+
+// Q-2) Create a new class called admin  which inherites from user .Add new method called editData to admin that allow it to  edit website data .
+
+
+class Admin extends User{
+ constructor(Name,email){
+     super(Name,email)
+ }
+  editData(){
+ 
+    console.log("Website Edited")
+  }
+}
+
+
+let obj = new Admin("Dipak","giaPaige69@gmail.com");
+console.log(obj.Name);//Dipak
+console.log(obj.email);//giaPaige69@gmial.com
+
+obj.viewData()//You are in website data stored
+obj.editData()//Website Edited
+
 
