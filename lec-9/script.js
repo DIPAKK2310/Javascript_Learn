@@ -93,18 +93,42 @@ OutPut ====>
 // ✅ What is Inheritance?
 //  Inheritance is a feature where one class (child) gets properties and methods from another class (parent).
 
-class Parent {
-  parentMethod() {
-    console.log("From parent");
-  }
-}
+          // class Parent {
+          //   parentMethod() {
+          //     console.log("From parent");
+          //   }
+          // }
 
-class Child extends Parent {
-  childMethod() {
-    console.log("From child");
-  }
-}
+          // class Child extends Parent {
+          //   childMethod() {
+          //     console.log("From child");
+          //   }
+          // }
 
-const obj = new Child();
-obj.parentMethod();
-obj.childMethod();
+          // const obj = new Child();
+          // obj.parentMethod();
+          // obj.childMethod();
+
+// Method Overriding;- If parent and child has same methods in this case child's method will be used
+
+class father{
+  sleep(){
+    console.log("I am sleeping")
+  }
+  
+  work(){
+    console.log("HI")
+  }
+
+  }
+
+  class child extends father{
+    work(){
+      console.log("I am working")
+    }
+  }
+
+
+  let obj = new child();// so in this childs work method will run not the fathers
+  
+
