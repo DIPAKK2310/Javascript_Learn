@@ -111,24 +111,44 @@ OutPut ====>
 
 // Method Overriding;- If parent and child has same methods in this case child's method will be used
 
-class father{
-  sleep(){
-    console.log("I am sleeping")
-  }
-  
-  work(){
-    console.log("HI")
-  }
+      // class father{
+      //   sleep(){
+      //     console.log("I am sleeping")
+      //   }
+        
+      //   work(){
+      //     console.log("HI")
+      //   }
 
-  }
+      //   }
 
-  class child extends father{
-    work(){
-      console.log("I am working")
-    }
-  }
+      //   class child extends father{
+      //     work(){
+      //       console.log("I am working")
+      //     }
+      //   }
 
 
-  let obj = new child();// so in this childs work method will run not the fathers
-  
+      //   let obj = new child();// so in this childs work method will run not the fathers
+//-------------------------//Super Keyword//--------------------------------------------------
+// Super Keyword is used to call the constructor of  its parents class to  access the parent's properties & methods.
+        //         class Parent {
+        //   constructor() {
+        //     this.someValue = 45;
+        //   }
+        // }
+
+        // class Child extends Parent {
+        //   constructor(someValue, childValue) {
+        //     super(someValue); // calls Parent's constructor
+        //     this.childValue = childValue;
+        //   }
+        // }
+        //   let obj = new Child("13");
+
+
+
+
+
+        
 
