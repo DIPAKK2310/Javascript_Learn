@@ -3,6 +3,7 @@ const dropdowns = document.querySelectorAll('.dropdown select');
 let btn = document.querySelector('.btn');
 let result = document.querySelector('.result');
 const message = document.querySelector('.msg');
+const arrowBtn = document.querySelector('.fa-arrow-right-arrow-left')
 for(let select of dropdowns){
      
      for(let currCode in countryList){
@@ -17,9 +18,25 @@ for(let select of dropdowns){
       select.appendChild(newOption);   
      }
      select.addEventListener('change', (evt)=>{
+    
          updateFlag(evt.target);
      });
  }
+
+
+ arrowBtn.addEventListener("click",(evt)=>{
+    let fromSelect = document.querySelector("select[name='from']")
+    let toSelect = document.querySelector("select[name='to']")
+
+    let temp = fromSelect.value
+     fromSelect.value = toSelect.value
+     toSelect.value = temp;
+
+
+     updateFlag(fromSelect);
+     updateFlag(toSelect);
+     getExchangeRate();
+ })
 
 
  const updateFlag = (element)=>{
@@ -31,22 +48,23 @@ for(let select of dropdowns){
     img.src = newSrc;
 }
 
-btn.addEventListener('click',async (evt) =>{
-        evt.preventDefault();// Prevent form submission
-        let from = document.querySelector('.from select').value;
-        let to = document.querySelector('.to select').value;
-        let amount = document.querySelector('.amount input').value; 
-        if(from === to){
-            result.innerText = "Please select different currencies";
+async function getExchangeRate(showLoading=true){
+    let from = document.querySelector('.from select').value;
+    let to = document.querySelector('.to select').value;
+    let amount = document.querySelector('.amount input').value; 
+    if(from === to){
+        result.innerText = "Please select different currencies";
             return;
         }  
         if(amount === "" || isNaN(amount) || amount <= 0){
-            result.innerText = " ❌Please enter a valid amount";
+            amount = 1;
             document.querySelector('.amount input').value = 1;// Default to 1 if input is invalid
-             amount = 1;
-            return;
+            result.innerText = "⚠️ Invalid input, defaulted to 1";            
         }
-        result.innerText = "Converting...";
+        if(showLoading){
+            result.innerText = "⏳Converting...";
+
+        }
         let url =`${Base_URL}/${from.toLowerCase()}.json`
 
         try {
@@ -63,5 +81,18 @@ btn.addEventListener('click',async (evt) =>{
             result.innerText = "❌ Error fetching conversion rate. Please try again later.";
             console.error(error)
         }
+    }
+    
+    btn.addEventListener('click',async (evt) =>{
+    evt.preventDefault();// Prevent form submission
+    getExchangeRate(true);// Call the function to get exchange rate
+      
         
 })
+
+
+window.addEventListener('load', () => {
+    document.querySelector('.amount input').value = 1;// Default to 1 if input is invalid
+     getExchangeRate(false); // Fetch initial exchange rate on page load
+
+}   );
